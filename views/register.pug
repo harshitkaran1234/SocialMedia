@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title Register Page
+    link(rel='stylesheet', href='styles.css')
+  body
+    .container
+      h1 Register
+      form(action='/register', method='POST')
+        label(for='name') Name:
+        input(type='text', name='name', id='name', required)
+        label(for='email') Email:
+        input(type='email', name='email', id='email', required)
+        label(for='username') Username:
+        input(type='text', name='username', id='username', required)
+        label(for='password') Password:
+        input(type='password', name='password', id='password', required)
+        label(for='confirmPassword') Confirm Password:
+        input(type='password', name='confirmPassword', id='confirmPassword', required)
+        button(type='submit') Register
+        a(href='/login') Login
+
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        const passwordField = document.getElementById('password');
+        const confirmPasswordField = document.getElementById('confirmPassword');
+        const registerButton = document.querySelector('button[type="submit"]');
+        
+        confirmPasswordField.addEventListener('input', function() {
+          if (passwordField.value === confirmPasswordField.value) {
+            confirmPasswordField.setCustomValidity('');
+          } else {
+            confirmPasswordField.setCustomValidity('Passwords must match');
+          }
+        });
+        
+        registerButton.addEventListener('click', function(event) {
+          if (passwordField.value !== confirmPasswordField.value) {
+            event.preventDefault(); // Prevent form submission
+            alert('Passwords do not match. Please check your input.');
+          }
+        });
+      });

@@ -7,6 +7,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const { checkLogin } = require('./middleware');
 
+const loginRoute = require('./routes/loginRoutes');
+const registerRoute = require('./routes/registerRoute');
+
+app.use("/login", loginRoute);
+app.use("/register", registerRoute);
+
 app.get('/', checkLogin, (req, res) => {
     res.render('home', { title: 'this is title', message: 'This is message'})
 })
