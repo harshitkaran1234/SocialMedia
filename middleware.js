@@ -3,8 +3,10 @@ const checkLogin = function (req, res, next) {
     if(!isLogged) {
         res.render('login')
     }
-    console.log('LOGGED')
-    next()
+    else{
+        console.log('LOGGED')
+        next()
+    }
   }
 
 module.exports = { checkLogin };

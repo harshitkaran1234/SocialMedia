@@ -1,5 +1,15 @@
+doctype html
 html
   head
-    title= 'Login Page'
+    title Login Page
+    link(rel='stylesheet', href='login.css')
   body
-    h1= 'please login'
+    .container
+      h1 Login
+      form(action='/login', method='POST')
+        label(for='username') Username:
+        input(type='text', name='username', id='username', required)
+        label(for='password') Password:
+        input(type='password', name='password', id='password', required)
+        button(type='submit') Log In
+        a(href='/register') Register
