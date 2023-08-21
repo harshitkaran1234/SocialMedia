@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-app.set('view engine', 'pug')
+app.set('view engine', 'pug');
 
-app.get('/', (req, res) => {
+const { checkLogin } = require('./middleware');
+
+app.get('/', checkLogin, (req, res) => {
     res.render('home', { title: 'this is title', message: 'This is message'})
 })
 
