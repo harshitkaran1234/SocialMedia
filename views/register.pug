@@ -7,8 +7,10 @@ html
     .container
       h1 Register
       form(action='/register', method='POST')
-        label(for='name') Name:
-        input(type='text', name='name', id='name', required)
+        label(for='firstName') First Name:
+        input(type='text', name='firstName', id='firstName', required)
+        label(for='lastName') Last Name:
+        input(type='text', name='lastName', id='lastName', required)
         label(for='email') Email:
         input(type='email', name='email', id='email', required)
         label(for='username') Username:

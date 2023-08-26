@@ -1,3 +1,4 @@
+var bodyParser = require('body-parser')
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -11,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const loginRoute = require('./routes/loginRoutes');
 const registerRoute = require('./routes/registerRoute');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 
